@@ -1,0 +1,70 @@
+/*
+Task description:
+An array of character is given. please compute the repeated characters in the String as the following formular shows:
+a[0],....a[k-1] = a[a.length-k],...a[a.length-1]
+k is the number of repeated characters
+
+example: 
+a,b,c,b,a--> k=1
+a,b,c,v,k,t,a,b,c--> k= 3
+
+
+How I solve this task:
+Firstly, I think about how many situations there can be with the given string.
+If the string is null----> k= 0 appearently.
+If the string contains only one character-----> k=1 appearently.
+If the string contains more than one character----> how I compare it?
+    Firstly, I conclue, due to a[0],....a[k-1] = a[a.length-k],...a[a.length-1], the repeated part of string must be symmetric.
+    ---> I divide the string in to first half part and last half part.
+    
+    Secondly, I decide to use a[0] as my key character to compare. 
+    ---> I use a[0], the I loop through the last half part the the string, to see if there is a[i] == a[0]
+    If yes, the I loop through a[i+1] until a[a.length-1], and compare it with a[0+1] till a[0+k]  (k= a.length - index of a[i])      STEP2
+        ---> if there is any pair of characters uneuqal, then I go back to outside loop and look for next character, who is euqal to a[0] , then repeat Steap2
+    In this way I can compute the k
+    
+Here is code:
+*/
+
+    public static int computePartialMatchLength (Character[] searchString) {
+		
+		if(searchString==null)
+			return 0;
+		int lengthOfString = searchString.length;
+						
+		if(lengthOfString==1) {			
+			return 1;
+		}
+		int k = 0;	
+		// set the beginning index of the last half part of array
+		int middle=lengthOfString /2;
+		if (lengthOfString % 2 != 0) 
+			middle = middle+1;
+	
+		for (int i = middle ; i <lengthOfString ;i++ ) {
+			if (searchString[0]== searchString[i] && i !=lengthOfString) {
+				k=1;
+				while(i+k < lengthOfString) {
+					if (searchString[i+k] ==searchString[0+k]) {
+						k++;
+					}else {
+						k=0;
+						break;
+					}
+				}
+			}else if(searchString[0]== searchString[i] && i ==lengthOfString) {
+				k=1;
+			}			
+		}	
+		return k;		
+	}
+    
+   /*
+   test result:
+   Character[] test= null;--->   k=0
+   Character[] test = Character[] test= {'a','b','c','d','a','b'};  ---> k=2
+   Character[] test= {'a'};--->k=1
+   */
+
+
+
