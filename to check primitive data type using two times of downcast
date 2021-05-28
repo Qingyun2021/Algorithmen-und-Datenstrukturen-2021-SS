@@ -1,0 +1,32 @@
+/*
+task description:
+write a methode char smallestStoreSpace(long n), a whole number n with data type long is given to this methode.
+please check, if the numer can be stores as type of byte, short, int or long.
+note 'b' for byte, 's' for short, 'i' for int and 'l' for long
+**/
+
+/* task solving:
+in java, byte , short , int and long are stored in this way:
+
+byte    8 bit   -2^7 ~2^7-1
+short   16 bit  -2^15 ~2^15-1
+int     32 bit   -2^31 ~2^31-1
+long    64 bit    -2^63 ~2^63-1
+
+we can use downcast twice to check, if the number after downcasting is in some specific interval
+**/
+
+char smallestSoreSpace(long n){
+  if (n==(long) (byte) n {                 // first downcast the n to type byte, then upcast it to long type
+    return 'b';
+    }
+  if (n == (long) (short) n{
+    return 's';
+    }
+  if (n == (long) (int) n {
+    return 'i';
+    }
+  if (n == (long) (long) n{
+    return 'l';
+  }
+}
