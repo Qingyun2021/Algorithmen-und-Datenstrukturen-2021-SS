@@ -1,0 +1,41 @@
+import java.util.Arrays;
+
+public class SelctionSortV1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] b = {7,8,9,10,45,0,0,7};
+		sort(b);
+	}
+	public static int[] sort (int []a) {
+		int min =0;
+		int index =0;
+		int tmp=0;
+		for (int i = 0; i <a.length-2; i++) {
+		// find the smallest element in the rest of array
+			for (int j = i; j<a.length -2; j++) {
+				if (a[j] > a[j+1]) {
+					min = a[j+1];
+					index = j+1;
+				}
+			}
+		// exchange element	
+			if( a[i] > min) {
+				tmp=a[i];
+				a[i]=min;
+				a[index]=tmp;
+			}
+		}
+		// print the result
+//		for (int i=0; i<a.length-1; i++) {
+//			System.out.println (a[i]);
+//		}
+		System.out.println(Arrays.toString(a));
+		return a;
+	}
+
+}
+
+******************************************************
+result :[0, 0, 7, 8, 9, 10, 45, 7]
+
