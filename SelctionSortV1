@@ -8,6 +8,8 @@ public class SelctionSortV1 {
 		sort(b);
 	}
 	public static int[] sort (int []a) {
+		if (a.lengh <2)
+			return a;
 		int min =0;
 		int index =0;
 		int tmp=0;
