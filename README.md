@@ -1,1 +1,1 @@
-# Algorithmen-und-Datenstrukturen-2021-SS
+# Algorithmen-und-Datenstrukturen
